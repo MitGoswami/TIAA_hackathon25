@@ -16,8 +16,5 @@ RUN uv sync --frozen
 # Copy the rest of your application code
 COPY . .
 
-# Set environment variables (adjust PORT if Azure sets it dynamically)
-ENV PORT=8000
-
 # Command to run your MCP server
 CMD ["uv", "run", "main.py"]
