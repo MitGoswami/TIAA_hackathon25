@@ -3,15 +3,16 @@ def run_sql_query(query: str) -> str:
     try:
         import mysql.connector
         import pandas as pd
+        import os
     except Exception as e:
-        return f"Error: {e}"
+        return f"Error importing modules: {e}"
     else:
         conn = mysql.connector.connect(
-            host="sql5.freesqldatabase.com",
-            user="sql5794381",
-            password="DYxhJVHRRs",
-            database="sql5794381",
-            port=3306
+            host=os.getenv("MYSQL_HOST"), 
+            user=os.getenv("MYSQL_USER"),
+            password=os.getenv("MYSQL_PASSWORD"),
+            database=os.getenv("MYSQL_DATABASE"),
+            port=int(os.getenv("MYSQL_PORT", 3306))
         )
         dangerous_keywords = ["delete", "drop", "truncate", "alter"]
         if any(keyword in query.lower().strip() for keyword in dangerous_keywords):

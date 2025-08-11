@@ -1,7 +1,6 @@
 from server import mcp
 from utils.generate_response import generate_response
 from utils.initialize_vectorstore import initialize_vectorstore
-from dotenv import load_dotenv
 import os
 
 @mcp.tool()
@@ -20,7 +19,6 @@ def rag_chain(user_query: str) -> dict:
             - 'source_documents' (list): A list of retrieved Document objects used to generate the response, each including metadata and content.
     """
     try:
-        load_dotenv()
         qdrant_url = os.getenv("QDRANT_URL")
         qdrant_api_key = os.getenv("QDRANT_API_KEY")
         openai_api_key = os.getenv("OPENAI_API_KEY")

@@ -2,9 +2,7 @@ from langchain_openai import ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
-from langchain.prompts import PromptTemplate, ChatPromptTemplate, MessagesPlaceholder
-from langchain.schema.messages import HumanMessage, AIMessage, SystemMessage
-import openai
+from langchain.prompts import PromptTemplate
 
 def generate_response(user_query, vectorstore, openai_api_key):
     prompt_template = """

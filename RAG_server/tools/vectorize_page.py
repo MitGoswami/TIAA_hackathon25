@@ -1,6 +1,5 @@
 from server import mcp
 from utils.generate_vector_embeddings import generate_vectors
-from dotenv import load_dotenv
 import os
 
 @mcp.tool()
@@ -21,7 +20,6 @@ def vectorize_confluence_page(page_title:str) -> str:
         created by the server. It assumes that the page is accessible via the Confluence API.
     """
     try:
-        load_dotenv()
         qdrant_url = os.getenv("QDRANT_URL")
         qdrant_api_key = os.getenv("QDRANT_API_KEY")
         confluence_url = os.getenv("CONFLUENCE_URL")

@@ -7,7 +7,6 @@ qdrant-client
 sentence-transformers
 openai
 mcp[cli]
-python-dotenv
 atlassian-python-api
 beautifulsoup4
 lxml
