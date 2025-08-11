@@ -24,4 +24,4 @@ jobs:
           context: ./MYSQL_server
           file: ./MYSQL_server/Dockerfile
           push: true
-          tags: mitgoswami/MysqlServer_Image:latest
+          tags: mitgoswami/mysqlserverimage:latest
