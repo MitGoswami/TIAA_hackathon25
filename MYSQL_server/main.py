@@ -14,8 +14,6 @@ logger = logging.getLogger(__name__)
 
 # Entry point to run the server
 if __name__ == "__main__":
-
-    logger.info(f"Starting MCP server on {host}:{port}")
     try:
         mcp.run(transport='streamable-http')
         logger.info(f"MCP server started")
