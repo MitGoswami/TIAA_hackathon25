@@ -1,35 +1,23 @@
-# Use slim Python 3.12 base
+# Use official Python base image
 FROM python:3.12-slim
 
-# Set working directory inside container
+# Install uv
+RUN pip install --no-cache-dir uv
+
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies (for lxml, mysql-connector, etc.)
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    default-libmysqlclient-dev \
-    python3-dev \
-    libxml2-dev \
-    libxslt-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Copy dependency files first (for better caching)
+COPY pyproject.toml uv.lock ./
 
-# Copy dependency list and install
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies using uv (will use uv.lock to ensure reproducibility)
+RUN uv sync --frozen
 
-# Hardcode MySQL credentials 
-ENV MYSQL_HOST="sql5.freesqldatabase.com"
-ENV MYSQL_USER="sql5794381"
-ENV MYSQL_PASSWORD="DYxhJVHRRs"
-ENV MYSQL_DATABASE="sql5794381"
-ENV MYSQL_PORT=3306
-
-# Copy application files
+# Copy the rest of your application code
 COPY . .
 
-# Expose port (change if your app uses another)
-EXPOSE 8000
+# Set environment variables (adjust PORT if Azure sets it dynamically)
+ENV PORT=8000
 
-# Command to run the app
-# Adjust main.py to whatever your entry point is
-CMD ["python", "main.py"]
+# Command to run your MCP server
+CMD ["uv", "run", "main.py"]
