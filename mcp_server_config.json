@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "MYSQL_APP": {
+      "command": "C:\\Users\\mitgo\\.local\\bin\\uv.EXE",
+      "args": [
+        "--directory",
+        "E:/python_scripts/MYSQL_APP",
+        "run",
+        "main.py"
+      ]
+    },
+	"RAG_APP":{
+	  "command": "C:\\Users\\mitgo\\.local\\bin\\uv.EXE",
+      "args": [
+        "--directory",
+        "E:/python_scripts/RAG",
+        "run",
+        "main.py"
+      ]
+	}
+  }
+}
