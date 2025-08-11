@@ -7,8 +7,8 @@ logger = logging.getLogger(__name__)
 
 @mcp.resource(uri="resource://schema",mime_type="application/json")
 def read_schema_json() -> dict:
-    """Provides schema of coffee_store database.
-    Read json file to get schema info of the coffee_store Database before
+    """Provides schema of MySQL database.
+    Read json file to get schema info of the MySQL Database before
     writing any SQL query and using run_sql_query_tool tool"""
     try:
         schema_path = Path.cwd() / "utils" / "coffee_store_db_schema.json"
