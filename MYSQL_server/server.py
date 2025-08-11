@@ -14,7 +14,7 @@ try:
     mcp = FastMCP("MYSQL_APP_SERVER", 
         stateless_http=True, 
         host=HOST, 
-        port=PORT)
+        port=PORT
     )
     logger.info(f"Starting MySQL MCP server on {HOST}:{PORT}")
 except Exception as e:
