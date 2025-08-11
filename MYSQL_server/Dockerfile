@@ -16,7 +16,7 @@ RUN uv sync --frozen
 # Copy the rest of your application code
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8181
 
 # Command to run your MCP server
 CMD ["uv", "run", "main.py"]

@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 try:
     HOST="0.0.0.0"
-    PORT=int(os.getenv("PORT",8080))
+    PORT=int(os.getenv("PORT",8181))
     mcp = FastMCP("MYSQL_APP_SERVER", 
         stateless_http=True, 
         host=HOST, 
