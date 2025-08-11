@@ -10,13 +10,13 @@ logger = logging.getLogger(__name__)
 
 try:
     HOST="0.0.0.0"
-    PORT=int(os.getenv("PORT",8080)
+    PORT=int(os.getenv("PORT",8080))
     mcp = FastMCP("MYSQL_APP_SERVER", 
         stateless_http=True, 
         host=HOST, 
         port=PORT)
     )
-    logger.info(f"Starting MCP server on {HOST}:{PORT}")
+    logger.info(f"Starting MySQL MCP server on {HOST}:{PORT}")
 except Exception as e:
     logger.info(f"Failed to start MCP server: {str(e)}")
     raise

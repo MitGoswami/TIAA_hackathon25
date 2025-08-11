@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 if __name__ == "__main__":
     try:
         mcp.run(transport='streamable-http')
-        logger.info(f"MCP server started")
+        logger.info(f"MySQL MCP server started")
     except Exception as e:
         logger.error(f"Failed to start server: {e}")
         raise
