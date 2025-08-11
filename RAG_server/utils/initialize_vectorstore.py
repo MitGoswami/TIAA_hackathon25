@@ -7,7 +7,7 @@ def initialize_vectorstore(qdrant_url,qdrant_api_key):
     embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-V2")
     vectorstore = Qdrant(
         client=qdrant_client,
-        collection_name="confluence_kb",
+        collection_name="confluence_knowledge_base",
         embeddings=embedding_model
     )
     return vectorstore

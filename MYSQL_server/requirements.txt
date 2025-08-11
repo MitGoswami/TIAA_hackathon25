@@ -1,0 +1,11 @@
+langchain
+langchain_community
+langchain-openai
+openai
+mcp[cli]
+python-dotenv
+atlassian-python-api
+beautifulsoup4
+lxml
+mysql-connector-python
+pandas
