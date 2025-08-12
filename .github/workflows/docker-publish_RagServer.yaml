@@ -22,6 +22,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./RAG_server
-          file: ./RAG_server/Dockerfile
+          file: ./RAG_server/Dockerfile.dockerfile
           push: true
           tags: mitgoswami/ragserverimage:latest
