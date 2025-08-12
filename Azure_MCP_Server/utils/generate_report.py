@@ -35,6 +35,7 @@ def generate_confluence_page(report: str, title: str):
             body=report.content,
             representation='storage'
         )
-        return f"Confluence Page '{title}' created in 'My third space'"
+        page_url = f"{confluence.url[:-1]}{response['_links']['webui']}"
+        return f"Confluence Page created {page_url}"
     except Exception as e:
         return f"Error: {str(e)}"

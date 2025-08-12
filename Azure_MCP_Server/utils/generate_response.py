@@ -3,6 +3,7 @@ from langchain.chains import RetrievalQA
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
+import os
 
 def generate_response(user_query, vectorstore, openai_api_key):
     prompt_template = """
@@ -23,8 +24,8 @@ def generate_response(user_query, vectorstore, openai_api_key):
         input_variables=["context", "chat_history", "question"],
         template=prompt_template
     )
-
-    llm = ChatOpenAI(model="gpt-4",temperature=0, api_key=openai_api_key)
+    model_name = os.getenv("LLM_MODEL", "gpt-4.1")
+    llm = ChatOpenAI(model=model_name,temperature=0, api_key=openai_api_key)
 
     rag_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
