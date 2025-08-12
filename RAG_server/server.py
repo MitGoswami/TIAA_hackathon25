@@ -1,3 +1,22 @@
 from mcp.server.fastmcp import FastMCP
+import os
+import logging
 
-mcp = FastMCP("RAG_APP")
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+try:
+    HOST="0.0.0.0"
+    PORT=int(os.getenv("PORT",8000))
+    mcp = FastMCP("RAG_APP_SERVER", 
+        stateless_http=True, 
+        host=HOST, 
+        port=PORT
+    )
+    logger.info(f"Starting RAG MCP server on {HOST}:{PORT}")
+except Exception as e:
+    logger.info(f"Failed to start MCP server: {str(e)}")
+    raise
