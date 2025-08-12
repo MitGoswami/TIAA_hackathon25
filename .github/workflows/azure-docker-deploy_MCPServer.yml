@@ -1,0 +1,29 @@
+name: Deploy Docker Container from Docker Hub to Azure App Service
+
+on:
+  push:
+    branches:
+      - main  # Or your desired branch for deployment
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }} # Use GitHub secret for Docker Hub username
+        password: ${{ secrets.DOCKERHUB_TOKEN }} # Use GitHub secret for Docker Hub password
+
+    - name: Deploy to Azure App Service
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: CTS-VibeAppwe31014-4 # Replace with your Azure App Service name
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # Reference the GitHub secret where you stored the publish profile contents
+        images: 'mitgoswami/azuremcpserverimage:latest' # Replace with your Docker Hub username, image name, and tag, e.g., mydockerusername/myimage:latest
+        # Optional: Add a startup command if your container needs one
+        # startup-command: 'gunicorn --bind=0.0.0.0 --timeout 600 app:app' # Example for a Python web app
