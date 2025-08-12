@@ -1,0 +1,33 @@
+{
+	"database": "sql5794381",
+	"tables":[
+		{
+			"table_name" : "products",
+			"columns": [
+				{"column_name": "id", "is_nullable": "NO","data_type": "int"},
+				{"column_name": "name", "is_nullable": "YES","data_type": "varchar"},
+				{"column_name": "price", "is_nullable": "YES","data_type": "decimal"},
+				{"column_name": "coffee_origin", "is_nullable": "YES","data_type": "varchar"}
+				]
+		},
+		{
+			"table_name" : "customers",
+			"columns": [
+				{"column_name": "id", "is_nullable": "NO","data_type": "int"},
+				{"column_name": "first_name", "is_nullable": "YES","data_type": "varchar"},
+				{"column_name": "last_name", "is_nullable": "YES","data_type": "varchar"},
+				{"column_name": "gender", "is_nullable": "YES","data_type": "enum"},
+				{"column_name": "phone_number", "is_nullable": "YES","data_type": "varchar"}
+				]
+		},
+		{
+			"table_name" : "orders",
+			"columns": [
+				{"column_name": "id", "is_nullable": "NO","data_type": "int"},
+				{"column_name": "product_id", "is_nullable": "YES","data_type": "int"},
+				{"column_name": "customer_id", "is_nullable": "YES","data_type": "int"},
+				{"column_name": "order_time", "is_nullable": "YES","data_type": "datetime"}
+				]
+		}
+	]
+}
